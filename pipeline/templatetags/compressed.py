@@ -64,7 +64,7 @@ class CompressedCSSNode(CompressedMixin, template.Node):
 
     def render_individual_css(self, package, paths, **kwargs):
         tags = [self.render_css(package, path) for path in paths]
-        return '\n'.join(tags)
+        return package.joinchar.join(tags)
 
 
 class CompressedJSNode(CompressedMixin, template.Node):
@@ -99,7 +99,7 @@ class CompressedJSNode(CompressedMixin, template.Node):
         tags = [self.render_js(package, js) for js in paths]
         if templates:
             tags.append(self.render_inline(package, templates))
-        return '\n'.join(tags)
+        return package.joinchar.join(tags)
 
 
 @register.tag

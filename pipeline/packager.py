@@ -59,6 +59,10 @@ class Package(object):
     def manifest(self):
         return self.config.get('manifest', True)
 
+    @property
+    def joinchar(self):
+        return self.config.get('joinchar', '\n')
+
 
 class Packager(object):
     def __init__(self, storage=default_storage, verbose=False, css_packages=None, js_packages=None):
